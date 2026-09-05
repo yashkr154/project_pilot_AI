@@ -1,0 +1,400 @@
+import { SavedProject, StudentProfile } from "../types";
+
+export const DEFAULT_BRANCHES = [
+  "Computer Science & Engineering",
+  "AI & Data Science",
+  "Software Engineering",
+  "Information Technology",
+  "Cybersecurity & Privacy",
+  "Electronics & Communication (IoT/Embedded)",
+  "Robotics & Automation",
+  "Electrical & Computer Engineering",
+];
+
+export const POPULAR_SKILLS = [
+  "Python",
+  "JavaScript / TypeScript",
+  "React",
+  "Node.js / Express",
+  "FastAPI",
+  "PyTorch / TensorFlow",
+  "SQL / PostgreSQL",
+  "MongoDB",
+  "Docker",
+  "OpenCV",
+  "Tailwind CSS",
+  "Flutter / React Native",
+  "C++",
+  "Java / Spring Boot",
+  "Git / GitHub Actions",
+  "LangChain / LLM APIs",
+];
+
+export const INTEREST_DOMAINS = [
+  "Healthcare & MedTech",
+  "Smart Campus & Student Life",
+  "FinTech & Fraud Detection",
+  "Climate Tech & Green Energy",
+  "Cybersecurity & Threat Detection",
+  "EdTech & Adaptive Learning",
+  "Computer Vision & Robotics",
+  "Agriculture & Rural Automation",
+  "Accessibility & Assistive Tech",
+  "Supply Chain & Logistics",
+];
+
+export const PROJECT_TYPES = [
+  "Final Year Capstone (2 Semesters / 6-9 months)",
+  "Semester Minor Project (3-4 months)",
+  "Research-Oriented Thesis & Prototype",
+  "Industry-Sponsored Startup MVP",
+];
+
+export const TEAM_SIZES = [
+  "Solo (1 Student)",
+  "2 Members",
+  "3-4 Members (Interdisciplinary)",
+];
+
+export const INITIAL_PROFILE: StudentProfile = {
+  branch: "Computer Science & Engineering",
+  skills: ["Python", "JavaScript / TypeScript", "React", "SQL / PostgreSQL", "PyTorch / TensorFlow"],
+  interests: ["Healthcare & MedTech", "Smart Campus & Student Life", "Accessibility & Assistive Tech"],
+  projectType: "Final Year Capstone (2 Semesters / 6-9 months)",
+  teamSize: "2 Members",
+  difficulty: "Intermediate",
+  customPrompt: "Focus on practical deployment, explainability, and high evaluation score in project viva.",
+};
+
+export const EXEMPLAR_PROJECTS: SavedProject[] = [
+  {
+    id: "proj-exemplar-1",
+    title: "MedExplain: Multimodal Clinical X-Ray Report Summarizer with Counterfactual Explanations",
+    tagline: "Explainable AI diagnostic support tool translating complex radiology scans into verified patient-friendly summaries with clinician auditing.",
+    domain: "Healthcare & MedTech",
+    problemStatement:
+      "Patients struggle to understand dense medical jargon in radiological scan reports, causing undue anxiety and poor treatment compliance, while overburdened doctors lack time for lengthy layperson breakdowns.",
+    solutionOverview:
+      "A privacy-conscious clinical assistant that accepts chest X-rays and radiologist notes, utilizes a localized vision-language pipeline to highlight focal points, and provides graded layman summaries alongside clinical audit checks.",
+    noveltyFactor:
+      "Integrates Grad-CAM visual heatmaps with localized text-grounded explanations, ensuring zero ungrounded clinical hallucinations via strict reference citation.",
+    targetAudience: "Primary care clinics, outpatient diagnostic labs, and recovering patients.",
+    feasibilityScore: 8.8,
+    feasibilityRationale:
+      "Utilizes open MIMIC-CXR or NIH ChestX-ray14 public datasets with fine-tuned Vision-Language embeddings and modern web visualization.",
+    difficulty: "Advanced",
+    estimatedWeeks: 18,
+    recommendedTechStack: {
+      frontend: ["React 19", "Tailwind CSS", "Lucide Icons", "DICOM Web Viewer"],
+      backend: ["FastAPI (Python)", "PyTorch", "HuggingFace Transformers"],
+      database: ["PostgreSQL (Relational)", "Qdrant (Vector DB)"],
+      aiOrSpecialized: ["Vision-Language Model (CLIP/Gemini API)", "Grad-CAM", "SHAP"],
+      devops: ["Docker", "GitHub Actions CI/CD"],
+    },
+    keyModules: [
+      { name: "Radiology Scan Preprocessing & DICOM Parser", description: "Sanitizes and extracts image slices and metadata with patient de-identification." },
+      { name: "Visual Pathology Localizer (Grad-CAM)", description: "Computes gradient-weighted class activation maps indicating focal anomalies." },
+      { name: "Bilingual / Multilevel Clinical Summarizer", description: "Translates findings into Grade 6 reading level while generating doctor validation diffs." },
+      { name: "Doctor Verification & Audit Workbench", description: "A dashboard enabling certified physicians to review, edit, and sign off on summaries." },
+    ],
+    potentialResearchAngle:
+      "Comparative analysis of hallucination mitigation in vision-language models when constrained by radiology domain ontologies.",
+    evaluationHighlights: [
+      "Rigorous patient privacy compliance (HIPAA de-identification pipeline)",
+      "High viva appeal: Demonstrates Explainable AI (XAI) rather than black-box prediction",
+      "Clear quantitative metrics (BLEU, ROUGE, and clinical accuracy agreement with doctors)",
+    ],
+    savedAt: "2026-09-01T10:00:00.000Z",
+    updatedAt: "2026-09-04T12:00:00.000Z",
+    tasks: [
+      {
+        id: "task-1",
+        phaseNumber: 1,
+        title: "Literature survey on XAI in Medical Imaging",
+        description: "Review at least 15 IEEE/ACM papers on vision-language models and Grad-CAM in healthcare.",
+        category: "Research",
+        estimatedDays: 10,
+        priority: "High",
+        deliverable: "Chapter 2 of Capstone Thesis (Literature Review)",
+        completed: true,
+        completedAt: "2026-09-02T14:30:00.000Z",
+      },
+      {
+        id: "task-2",
+        phaseNumber: 1,
+        title: "De-identification & Dataset Preparation",
+        description: "Download subset of NIH ChestX-ray14 and verify DICOM metadata scrubbing.",
+        category: "Data",
+        estimatedDays: 6,
+        priority: "High",
+        deliverable: "Cleaned benchmark dataset repository",
+        completed: true,
+        completedAt: "2026-09-03T11:00:00.000Z",
+      },
+      {
+        id: "task-3",
+        phaseNumber: 2,
+        title: "System Architecture & API Specifications",
+        description: "Draft OpenAPI 3.0 schema for FastAPI endpoints and frontend React state store.",
+        category: "Architecture",
+        estimatedDays: 5,
+        priority: "Medium",
+        deliverable: "Software Requirement Specification (SRS) v1.0",
+        completed: false,
+      },
+      {
+        id: "task-4",
+        phaseNumber: 3,
+        title: "Core DICOM Upload & Viewer Frontend",
+        description: "Build drag-and-drop DICOM image renderer with windowing/contrast controls.",
+        category: "Frontend",
+        estimatedDays: 8,
+        priority: "High",
+        deliverable: "Functional UI prototype with test scans",
+        completed: false,
+      },
+      {
+        id: "task-5",
+        phaseNumber: 4,
+        title: "Grad-CAM Visual Heatmap Pipeline",
+        description: "Implement convolutional layer gradient extraction and overlay generator.",
+        category: "AI/ML",
+        estimatedDays: 12,
+        priority: "High",
+        deliverable: "Inference endpoint returning heatmap overlay coordinates",
+        completed: false,
+      },
+      {
+        id: "task-6",
+        phaseNumber: 5,
+        title: "Clinical Accuracy & Readability Evaluation",
+        description: "Calculate Flesch-Kincaid grade level and compute doctor alignment benchmark.",
+        category: "Testing",
+        estimatedDays: 7,
+        priority: "Medium",
+        deliverable: "Experimental Results Table for Chapter 5",
+        completed: false,
+      },
+    ],
+    logbook: [
+      {
+        id: "log-1",
+        date: "2026-09-02",
+        title: "Project Proposal Approved by Department Committee",
+        summary: "Presented the problem statement and dataset feasibility. Committee emphasized focusing on explainability rather than just diagnostic accuracy.",
+        advisorFeedback: "Ensure you clearly cite NIH ChestX-ray14 license and include a disclaimer that the system is an advisory tool.",
+        nextSteps: "Complete SRS and finalize the Grad-CAM pipeline architecture.",
+      },
+    ],
+    roadmap: {
+      architectureOverview: {
+        summary: "A three-tier clinical application separating the GPU-accelerated inference cluster from the patient/physician web portal with zero-retention raw medical image buffering.",
+        clientTier: "React 19 SPA with Tailwind CSS, HTML5 Canvas for DICOM slice rendering and heatmap overlays.",
+        applicationTier: "FastAPI asynchronous REST API handling auth, image sanitization queue, and audit logs.",
+        dataAndAiTier: "PyTorch inference worker with Vision-Language embeddings + Grad-CAM layer; PostgreSQL for patient metadata.",
+        securityAndAuth: "JWT token authentication with RBAC (Patient, Radiologist, System Admin) and SHA-256 image fingerprinting.",
+        dataFlowSteps: [
+          "1. Radiologist uploads DICOM scan and clinical notes via secure portal.",
+          "2. Gateway strips all PHI (Protected Health Information) tags.",
+          "3. Vision pipeline extracts spatial features and calculates anomaly probabilities.",
+          "4. Grad-CAM layer identifies the bounding region of interest for the diagnosis.",
+          "5. Language model synthesizes a 6th-grade level patient summary referencing the visual findings.",
+          "6. Physician reviews and signs off on the dual report before patient access is unlocked.",
+        ],
+      },
+      techStackDetails: [
+        {
+          category: "Deep Learning Pipeline",
+          selectedTool: "PyTorch + TorchVision",
+          rationale: "Industry standard for academic research with native hooks for Grad-CAM activations.",
+          academicEvaluationBenefit: "Highly respected by external viva examiners; easy to export model weights and metrics.",
+          alternatives: ["TensorFlow 2.x", "ONNX Runtime"],
+        },
+        {
+          category: "Backend Framework",
+          selectedTool: "FastAPI",
+          rationale: "Asynchronous Python server with native Pydantic typing and automatic Swagger documentation.",
+          academicEvaluationBenefit: "Demonstrates modern API development standards beyond legacy Django/Flask.",
+          alternatives: ["Flask", "Express.js"],
+        },
+        {
+          category: "Frontend Interface",
+          selectedTool: "React 19 + Tailwind CSS",
+          rationale: "Instant component reactivity for manipulating image contrast, zooming, and switching heatmap layers.",
+          academicEvaluationBenefit: "Clean, responsive demo presentation during live evaluation.",
+          alternatives: ["Vue.js", "Next.js"],
+        },
+      ],
+      phases: [
+        {
+          phaseNumber: 1,
+          phaseName: "Problem Formulation & Literature Review",
+          durationWeeks: "Weeks 1 - 3",
+          keyObjectives: [
+            "Formalize problem statement and clinical scope",
+            "Survey existing literature on medical explainability (Grad-CAM, SHAP)",
+            "Acquire and sanitize benchmark datasets",
+          ],
+          deliverables: ["Literature Survey Chapter", "SRS Document v1.0", "Dataset Audit Report"],
+          vivaCheckpointQuestion: "Why did you choose Grad-CAM over simple bounding box detection?",
+        },
+        {
+          phaseNumber: 2,
+          phaseName: "System Architecture & Data Modeling",
+          durationWeeks: "Weeks 4 - 6",
+          keyObjectives: [
+            "Design database schemas and HIPAA de-identification module",
+            "Wireframe radiologist audit dashboard and patient portal",
+            "Setup Dockerized development environment",
+          ],
+          deliverables: ["Entity-Relationship Diagram", "System Architecture Blueprint", "Figma UI Prototype"],
+          vivaCheckpointQuestion: "How does your architecture handle concurrency when multiple scans are processed?",
+        },
+        {
+          phaseNumber: 3,
+          phaseName: "Core Inference & MVP Pipeline",
+          durationWeeks: "Weeks 7 - 10",
+          keyObjectives: [
+            "Build DICOM upload and visualizer component",
+            "Implement basic anomaly classification and feature extraction",
+            "Connect frontend and backend via REST APIs",
+          ],
+          deliverables: ["Functional MVP", "API Documentation (Swagger)", "Unit Test Suite"],
+          vivaCheckpointQuestion: "What is your baseline classification accuracy and loss curve?",
+        },
+        {
+          phaseNumber: 4,
+          phaseName: "Explainability & Patient Summarizer Integration",
+          durationWeeks: "Weeks 11 - 13",
+          keyObjectives: [
+            "Implement Grad-CAM overlay generator with alpha transparency",
+            "Integrate Gemini API for structured layperson translation",
+            "Build doctor edit-and-sign audit trail",
+          ],
+          deliverables: ["Working XAI Engine", "Doctor Verification Interface", "Demonstration Video"],
+          vivaCheckpointQuestion: "How do you guarantee the AI will not generate dangerous false medical advice?",
+        },
+        {
+          phaseNumber: 5,
+          phaseName: "Rigorous Evaluation & Benchmarking",
+          durationWeeks: "Weeks 14 - 15",
+          keyObjectives: [
+            "Evaluate summary readability with Flesch-Kincaid metrics",
+            "Run latency and load testing on image inference",
+            "Gather feedback from at least 3 medical students or clinicians",
+          ],
+          deliverables: ["Evaluation Chapter & Graphs", "Confusion Matrix Analysis", "User Study Summary"],
+          vivaCheckpointQuestion: "What were the primary failure modes discovered during testing?",
+        },
+        {
+          phaseNumber: 6,
+          phaseName: "Documentation, Deployment & Viva Defense Prep",
+          durationWeeks: "Weeks 16 - 18",
+          keyObjectives: [
+            "Complete final 80-page capstone thesis following university formatting",
+            "Deploy cloud demo on Cloud Run / Docker",
+            "Prepare 15-minute presentation slide deck and viva Q&A rehearsal",
+          ],
+          deliverables: ["Final Capstone Thesis (PDF)", "Viva Presentation Deck", "Live Cloud Demo URL"],
+          vivaCheckpointQuestion: "If you had 6 more months, how would you commercialize or publish this work?",
+        },
+      ],
+      milestoneTasks: [],
+      learningResources: [
+        {
+          title: "Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization",
+          type: "Seminal Paper",
+          providerOrTopic: "IEEE International Conference on Computer Vision (ICCV)",
+          description: "The original paper introducing the Grad-CAM technique used worldwide for visual model interpretation.",
+          suggestedSearchQuery: "Grad-CAM ICCV 2017 paper PDF",
+          recommendedUrl: "https://arxiv.org/abs/1610.02391",
+        },
+        {
+          title: "NIH ChestX-ray14 Official Dataset & Documentation",
+          type: "Benchmark Dataset",
+          providerOrTopic: "National Institutes of Health (NIH)",
+          description: "Over 100,000 anonymized frontal-view X-ray images with common disease labels.",
+          suggestedSearchQuery: "NIH ChestX-ray14 dataset Kaggle official",
+          recommendedUrl: "https://cloud.google.com/healthcare-api/docs/resources/public-datasets/nih-chest",
+        },
+        {
+          title: "FastAPI Documentation & Async Performance Patterns",
+          type: "Official Docs",
+          providerOrTopic: "FastAPI Official",
+          description: "Complete guide on setting up asynchronous Python endpoints and background image workers.",
+          suggestedSearchQuery: "FastAPI async background tasks documentation",
+          recommendedUrl: "https://fastapi.tiangolo.com/",
+        },
+      ],
+      improvementsAndInnovations: [
+        {
+          title: "Counterfactual Image Generation for What-If Analysis",
+          category: "Research Edge",
+          impact: "Allows examiners to see: 'What minimal pixels would need to change for this scan to be classified as healthy?'",
+          howToImplement: "Use a Latent Diffusion or CycleGAN model conditioned on class labels to highlight precise anomaly boundaries.",
+          academicPaperPotential: "High publication potential in IEEE JBHI or MICCAI workshops.",
+        },
+        {
+          title: "Offline Edge Deployment via ONNX Runtime & WebAssembly",
+          category: "System Engineering",
+          impact: "Enables rural clinics with zero internet connection to analyze scans directly inside the browser.",
+          howToImplement: "Quantize PyTorch model to INT8 ONNX weights and execute using onnxruntime-web.",
+          academicPaperPotential: "Excellent for practical capstone evaluation score (impresses examiners with real-world accessibility).",
+        },
+      ],
+      vivaPreparationTips: [
+        {
+          question: "How did you prevent patient data leakage in compliance with privacy regulations?",
+          modelAnswerStrategy: "Explain the client-side/gateway de-identification step: All DICOM metadata tags (0010,0010 Patient Name, 0010,0020 Patient ID) are zeroed out before any payload enters the inference cluster, and images are cached purely in ephemeral memory.",
+        },
+        {
+          question: "Why should we trust Grad-CAM over attention maps in Transformers?",
+          modelAnswerStrategy: "Grad-CAM calculates the exact gradients flowing into the final convolutional layer with respect to the specific diagnostic class score, preserving spatial localization without requiring model re-training.",
+        },
+      ],
+    },
+  },
+  {
+    id: "proj-exemplar-2",
+    title: "CampusGrid: AI-Driven Multi-Building Energy Disaggregation & Peak Demand Shaving",
+    tagline: "IoT telemetry analysis platform forecasting university electricity surges and automatically scheduling flexible lab loads to slash peak tariff costs.",
+    domain: "Smart Campus & Green Energy",
+    problemStatement:
+      "Universities incur punishing utility peak-demand charges due to uncoordinated high-draw laboratory equipment, HVAC scheduling, and student computer lab surges.",
+    solutionOverview:
+      "An intelligent smart campus dashboard using Non-Intrusive Load Monitoring (NILM) and predictive time-series models (Temporal Fusion Transformers) to forecast campus power demand 24 hours ahead and prescribe automated load shifting.",
+    noveltyFactor:
+      "Combines real-time synthetic IoT streams with weather forecasts and academic class timetable APIs to predict localized HVAC usage.",
+    targetAudience: "University facilities managers, campus sustainability committees, and green campus auditors.",
+    feasibilityScore: 9.1,
+    feasibilityRationale:
+      "Can be built using campus building smart meter data or the public Pecan Street / REFIT electricity datasets with simulated IoT telemetry.",
+    difficulty: "Intermediate",
+    estimatedWeeks: 16,
+    recommendedTechStack: {
+      frontend: ["React 19", "Tailwind CSS", "Recharts", "Lucide Icons"],
+      backend: ["Node.js / Express or Python", "MQTT Broker (Mosquitto)"],
+      database: ["TimescaleDB / PostgreSQL", "Redis for Caching"],
+      aiOrSpecialized: ["Prophet / TFT Time-Series Models", "Gemini API for Executive Summaries"],
+      devops: ["Docker Compose", "Grafana Integration"],
+    },
+    keyModules: [
+      { name: "Simulated Campus IoT Telemetry Streamer", description: "Generates high-frequency power, voltage, and reactive power readings across campus blocks." },
+      { name: "24-Hour Peak Demand Forecasting Engine", description: "Predicts electrical load spikes considering calendar class schedules and temperature." },
+      { name: "Automated Load Shaving Prescriptor", description: "Recommends deferring non-urgent lab battery charging and adjusting chilled water temps." },
+      { name: "Campus Carbon & Cost Analytics Dashboard", description: "Visualizes kilowatt hours saved, tariff tier avoidance, and CO2 emissions reduction." },
+    ],
+    potentialResearchAngle:
+      "Integrating academic timetable data with microclimate forecasts for high-precision institutional demand response.",
+    evaluationHighlights: [
+      "Direct relevance to campus administrators — examiners love campus-focused projects",
+      "Robust time-series data visualization with tangible financial ROI metrics",
+      "Combines IoT architecture, machine learning forecasting, and automated policy generation",
+    ],
+    savedAt: "2026-09-02T15:00:00.000Z",
+    updatedAt: "2026-09-04T12:00:00.000Z",
+    tasks: [],
+    logbook: [],
+    roadmap: undefined,
+  },
+];

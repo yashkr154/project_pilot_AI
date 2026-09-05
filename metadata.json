@@ -1,0 +1,6 @@
+{
+  "name": "ProjectPilot - AI Final-Year Project Advisor",
+  "description": "AI-powered platform helping final-year students brainstorm project ideas, generate comprehensive tech specs and roadmaps, track milestones, and discover curated learning resources.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
